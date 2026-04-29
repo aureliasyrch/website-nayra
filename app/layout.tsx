@@ -14,11 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      {/* Hapus flex flex-col di body agar scroll lebih natural */}
-      <body className="bg-[#D0E7FF] text-slate-900 antialiased min-h-screen">
+      {/* Ganti bg-[#D0E7FF] menjadi bg-[#0B0E14] agar seluruh sela layar berwarna hitam pekat */}
+      <body className="bg-[#0B0E14] text-slate-900 antialiased min-h-screen">
         <Navbar />
-        {/* Main tidak perlu flex-grow jika body tidak flex-col */}
-        <main>{children}</main>
+        <main className="pt-16 md:pt-20">{children}</main>
         <Footer />
       </body>
     </html>

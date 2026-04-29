@@ -6,8 +6,6 @@ import Image from "next/image";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const closeMenu = () => setIsOpen(false);
-
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "Product", href: "/product" },
@@ -16,48 +14,48 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-4 z-50 px-4 md:px-10">
-      {/* Container Utama: Glassmorphism */}
-      <div
-        className={`max-w-7xl mx-auto bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl transition-all duration-500 ${
-          isOpen ? "shadow-2xl" : "shadow-[0_8px_32px_rgba(30,58,138,0.15)]"
-        }`}
-      >
-        <div className="px-5 py-3 md:px-8 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full z-[100] px-0">
+      {/* EFEK GLASSMORHPISM (Berdasarkan referensi Billy Orr):
+          - background: rgba(0, 0, 0, 0.4) -> Hitam transparan
+          - backdrop-blur(20px) -> Efek kaca buram tebal
+          - border-white/10 -> Garis pinggir kaca tipis
+      */}
+      <div className="w-full bg-black/40 backdrop-blur-[20px] border-b border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.6)] transition-all duration-500">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 h-14 md:h-16 flex justify-between items-center">
           {/* 1. Logo Section */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 group"
-            onClick={closeMenu}
-          >
-            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden border-2 border-blue-100 shadow-[0_4px_10px_rgba(59,130,246,0.3)] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+          <Link href="/" className="flex items-center gap-3 group">
+            {/* CONTAINER LOGO KOTAK & ZOOM */}
+            <div className="relative w-10 h-10 md:w-11 md:h-11 overflow-hidden rounded-md border border-white/10 shadow-lg">
               <Image
-                src="/logo-nayragamestore.jpeg"
+                src="/logo.png"
                 alt="Nayra Store Logo"
                 fill
-                className="object-cover"
+                /* TRICK ZOOM: scale-[2.5] untuk membuang space kosong di file asli
+                   object-center untuk fokus ke logo NR di tengah
+                */
+                className="object-cover scale-[1.5] object-center transition-transform duration-500 group-hover:scale-[1.8]"
+                priority
               />
             </div>
+
+            {/* NAMA STORE DENGAN EFEK GRADASI TIMBUL */}
             <div className="flex flex-col">
-              <span className="text-sm md:text-xl font-black text-[#1E3A8A] tracking-tighter leading-none transition-colors group-hover:text-blue-600">
-                NAYRA
-              </span>
-              <span className="text-[9px] md:text-[11px] text-[#2e56c1] font-bold tracking-[0.2em] uppercase mt-0.5">
-                Game Store
+              <span className="text-xl md:text-lg font-black italic tracking-tight bg-gradient-to-r from-[#5587c1] via-[#494fa0] to-[#d77baa] bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(152,148,242,0.5)]">
+                NAYRASTORE
               </span>
             </div>
           </Link>
 
-          {/* 2. Desktop Menu */}
+          {/* 2. Desktop Menu (Sleek & Iconic) */}
           <div className="hidden md:flex items-center gap-1">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative px-5 py-2.5 rounded-xl text-[#1E3A8A] font-bold text-sm hover:text-blue-600 transition-all duration-300 hover:bg-white/70 hover:shadow-[inset_0_-2px_4px_rgba(0,0,0,0.05),0_4_15px_rgba(59,130,246,0.1)] group"
+                className="px-4 py-2 text-white/70 font-bold text-[10px] uppercase tracking-[0.25em] hover:text-white transition-all relative group"
               >
                 {item.name}
-                <span className="absolute bottom-2 left-5 right-5 h-0.5 bg-gradient-to-r from-[#1E3A8A] via-[#4D7CFE] to-[#8E94F2] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-1/2 group-hover:left-1/4"></span>
               </Link>
             ))}
           </div>
@@ -65,36 +63,38 @@ export default function Navbar() {
           {/* 3. Mobile Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2.5 rounded-xl bg-white/40 border border-white/20 shadow-sm active:scale-90 transition-all flex items-center justify-center"
+            className="md:hidden p-2 flex flex-col gap-1.5 items-end group"
           >
-            <div className="relative w-5 h-3.5 flex flex-col justify-between">
-              <span
-                className={`w-5 h-[2px] bg-[#1E3A8A] rounded-full transition-all duration-300 origin-left ${isOpen ? "rotate-[42deg] translate-y-[-1px] w-[20px]" : ""}`}
-              ></span>
-              <span
-                className={`w-3.5 h-[2px] bg-[#4D7CFE] rounded-full transition-all duration-300 ${isOpen ? "opacity-0 -translate-x-2" : "opacity-100"}`}
-              ></span>
-              <span
-                className={`w-5 h-[2px] bg-[#8E94F2] rounded-full transition-all duration-300 origin-left ${isOpen ? "-rotate-[42deg] translate-y-[1px] w-[20px]" : ""}`}
-              ></span>
-            </div>
+            <div
+              className={`h-[3px] bg-white rounded-full transition-all duration-300 ${isOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`}
+            ></div>
+            <div
+              className={`h-[2px] bg-white rounded-full transition-all duration-300 ${isOpen ? "opacity-0" : "w-4"}`}
+            ></div>
+            <div
+              className={`h-[3px] bg-white rounded-full transition-all duration-300 ${isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-5"}`}
+            ></div>
           </button>
         </div>
+      </div>
 
-        {/* 4. Mobile Menu Dropdown: SEMUA PAKAI GRADIENT */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="px-6 pb-8 pt-2 flex flex-col space-y-3">
-            {menuItems.map((item) => (
+      {/* 4. Mobile Popup Menu (Sesuai Referensi Glassmorphism) */}
+      <div
+        className={`md:hidden absolute top-[65px] right-5 left-5 transition-all duration-500 ease-out transform ${
+          isOpen
+            ? "opacity-100 translate-y-0 scale-100"
+            : "opacity-0 -translate-y-10 scale-95 pointer-events-none"
+        }`}
+      >
+        <div className="bg-black/70 backdrop-blur-[25px] border border-white/10 shadow-[0_25px_50px_rgba(0,0,0,0.8)] rounded-2xl overflow-hidden">
+          <div className="flex flex-col p-2">
+            {menuItems.map((item, idx) => (
               <Link
                 key={item.name}
                 href={item.href}
-                onClick={closeMenu}
-                /* Di sini kuncinya: Semua item menggunakan bg-gradient-to-r */
-                className="p-4 rounded-xl font-bold text-center text-white bg-gradient-to-r from-[#1E3A8A] via-[#4D7CFE] to-[#8E94F2] shadow-lg shadow-blue-200/50 active:scale-95 transition-all"
+                onClick={() => setIsOpen(false)}
+                style={{ transitionDelay: `${idx * 40}ms` }}
+                className="py-4 px-6 text-white/90 font-black uppercase text-[10px] tracking-[0.3em] text-center rounded-xl transition-all active:scale-95 hover:bg-white/10"
               >
                 {item.name}
               </Link>

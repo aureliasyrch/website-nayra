@@ -1,217 +1,569 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function ProductPage() {
-  const waNumber = "6285211625814";
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filter, setFilter] = useState("default");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showPaymentInfo, setShowPaymentInfo] = useState(false);
+  const [selectedGame, setSelectedGame] = useState<any>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [orderData, setOrderData] = useState({
+    item: "",
+    amount: "",
+    idPlayer: "",
+    phone: "",
+  });
 
-  // Data Produk - Pastikan gambar ada di folder /public/
-  const allProducts = [
+  const games = [
     {
-      id: 1,
-      name: "86 Diamonds ML",
-      category: "Mobile Legends",
-      price: 20000,
-      isFavorite: true,
-      img: "/ml-diamond.jpg",
+      name: "Mobile Legends",
+      id: "ml",
+      img: "/mlcardHD.jpeg",
+      desc: "Diamonds (ID/BR), Weekly Pass, Starlight, & Gift Skin.",
+      hasCategories: true,
+      categories: [
+        {
+          name: "Diamonds Indo 🇮🇩",
+          prices: [
+            { qty: "5 Diamonds", price: "Rp 1.500" },
+            { qty: "50+50 Diamonds", price: "Rp 15.500" },
+            { qty: "59 Diamonds", price: "Rp 15.500" },
+            { qty: "85 Diamonds", price: "Rp 22.300" },
+            { qty: "Weekly Pass", price: "Rp 27.500" },
+            { qty: "112 Diamonds", price: "Rp 29.900" },
+            { qty: "150+150 Diamonds", price: "Rp 44.500" },
+            { qty: "172 Diamonds", price: "Rp 45.800" },
+            { qty: "240 Diamonds", price: "Rp 62.200" },
+            { qty: "250+250 Diamonds", price: "Rp 73.500" },
+            { qty: "296 Diamonds", price: "Rp 76.500" },
+            { qty: "408 Diamonds", price: "Rp 104.800" },
+            { qty: "500+500 Diamonds", price: "Rp 145.500" },
+            { qty: "568 Diamonds", price: "Rp 143.700" },
+            { qty: "659 Diamonds", price: "Rp 168.600" },
+            { qty: "706 Diamonds", price: "Rp 179.800" },
+            { qty: "875 Diamonds", price: "Rp 219.200" },
+            { qty: "1050 Diamonds", price: "Rp 261.500" },
+            { qty: "1159 Diamonds", price: "Rp 290.700" },
+            { qty: "1220 Diamonds", price: "Rp 305.900" },
+            { qty: "1412 Diamonds", price: "Rp 353.800" },
+            { qty: "2010 Diamonds", price: "Rp 475.000" },
+          ],
+        },
+        {
+          name: "Diamonds Brazil 🇧🇷",
+          prices: [
+            { qty: "50+50 Diamonds", price: "Rp 11.500" },
+            { qty: "86 Diamonds", price: "Rp 18.700" },
+            { qty: "Weekly Pass", price: "Rp 23.509" },
+            { qty: "150+150 Diamonds", price: "Rp 32.500" },
+            { qty: "172 Diamonds", price: "Rp 36.700" },
+            { qty: "250+250 Diamonds", price: "Rp 54.500" },
+            { qty: "257 Diamonds", price: "Rp 54.600" },
+            { qty: "344 Diamonds", price: "Rp 72.800" },
+            { qty: "429 Diamonds", price: "Rp 90.800" },
+            { qty: "516 Diamonds", price: "Rp 109.200" },
+            { qty: "500+500 Diamonds", price: "Rp 118.500" },
+            { qty: "600 Diamonds", price: "Rp 127.700" },
+            { qty: "792 Diamonds", price: "Rp 163.800" },
+            { qty: "878 Diamonds", price: "Rp 181.900" },
+            { qty: "963 Diamonds", price: "Rp 200.000" },
+            { qty: "1050 Diamonds", price: "Rp 217.500" },
+            { qty: "1135 Diamonds", price: "Rp 236.800" },
+            { qty: "1220 Diamonds", price: "Rp 255.000" },
+            { qty: "1346 Diamonds", price: "Rp 272.300" },
+            { qty: "1412 Diamonds", price: "Rp 291.400" },
+            { qty: "1669 Diamonds", price: "Rp 345.500" },
+            { qty: "1825 Diamonds", price: "Rp 362.800" },
+            { qty: "1926 Diamonds", price: "Rp 399.500" },
+            { qty: "2014 Diamonds", price: "Rp 418.500" },
+          ],
+        },
+        {
+          name: "Starlight Card 💫",
+          prices: [
+            { qty: "Basic Starlight", price: "Rp 35.500" },
+            { qty: "Premium Starlight", price: "Rp 80.000" },
+          ],
+        },
+        {
+          name: "Giftshop Skin 🎁",
+          prices: [
+            { qty: "Basic (269💎)", price: "Rp 35.000" },
+            { qty: "Elite (399💎)", price: "Rp 55.000" },
+            { qty: "Elite (599💎)", price: "Rp 75.000" },
+            { qty: "Special (749💎)", price: "Rp 105.000" },
+            { qty: "Epic (899💎)", price: "Rp 115.000" },
+            { qty: "Epic (1089💎)", price: "Rp 155.000" },
+          ],
+        },
+      ],
     },
     {
-      id: 2,
-      name: "172 Diamonds ML",
-      category: "Mobile Legends",
-      price: 40000,
-      isFavorite: false,
-      img: "/ml-diamond.jpg",
+      name: "Free Fire",
+      id: "ff",
+      img: "/ffHD.JPEG",
+      desc: "Diamonds Fast Process & Membership (Weekly/Monthly).",
+      hasCategories: true,
+      categories: [
+        {
+          name: "Diamonds FF 💎",
+          prices: [
+            { qty: "120 Diamonds", price: "Rp 16.500" },
+            { qty: "140 Diamonds", price: "Rp 18.700" },
+            { qty: "180 Diamonds", price: "Rp 25.500" },
+            { qty: "200 Diamonds", price: "Rp 27.800" },
+            { qty: "210 Diamonds", price: "Rp 28.500" },
+            { qty: "250 Diamonds", price: "Rp 34.700" },
+            { qty: "400 Diamonds", price: "Rp 54.500" },
+            { qty: "475 Diamonds", price: "Rp 63.500" },
+            { qty: "500 Diamonds", price: "Rp 67.000" },
+            { qty: "635 Diamonds", price: "Rp 85.000" },
+            { qty: "720 Diamonds", price: "Rp 90.700" },
+            { qty: "860 Diamonds", price: "Rp 113.100" },
+            { qty: "925 Diamonds", price: "Rp 122.500" },
+            { qty: "1050 Diamonds", price: "Rp 138.700" },
+            { qty: "1200 Diamonds", price: "Rp 158.900" },
+            { qty: "1440 Diamonds", price: "Rp 188.000" },
+            { qty: "1510 Diamonds", price: "Rp 196.800" },
+            { qty: "2180 Diamonds", price: "Rp 274.500" },
+          ],
+        },
+        {
+          name: "Membership FF 🎫",
+          prices: [
+            { qty: "BP Card", price: "Rp 40.000" },
+            { qty: "Weekly (MM)", price: "Rp 28.500" },
+            { qty: "Monthly (MB)", price: "Rp 85.000" },
+          ],
+        },
+      ],
     },
     {
-      id: 3,
-      name: "257 Diamonds ML",
-      category: "Mobile Legends",
-      price: 60000,
-      isFavorite: true,
-      img: "/ml-diamond.jpg",
+      name: "Roblox",
+      id: "roblox",
+      img: "/RobloxcardHD.jpeg",
+      desc: "Robux Instant via Login or Gamepass Method.",
+      hasCategories: true,
+      categories: [
+        {
+          name: "Robux via Login 🔑",
+          prices: [
+            { qty: "80 Robux", price: "Rp 15.500" },
+            { qty: "160 Robux", price: "Rp 31.500" },
+            { qty: "240 Robux", price: "Rp 46.500" },
+            { qty: "320 Robux", price: "Rp 62.000" },
+            { qty: "500 Robux", price: "Rp 72.500" },
+            { qty: "1000 Robux", price: "Rp 145.000" },
+            { qty: "1500 Robux", price: "Rp 215.000" },
+            { qty: "2000 Robux", price: "Rp 285.000" },
+            { qty: "3000 Robux", price: "Rp 420.000" },
+            { qty: "4000 Robux", price: "Rp 560.000" },
+            { qty: "5000 Robux", price: "Rp 695.000" },
+          ],
+        },
+        {
+          name: "Robux via Gamepass 🎮",
+          prices: [
+            { qty: "100 Robux", price: "Rp 12.500" },
+            { qty: "200 Robux", price: "Rp 25.000" },
+            { qty: "300 Robux", price: "Rp 37.500" },
+            { qty: "400 Robux", price: "Rp 50.000" },
+            { qty: "500 Robux", price: "Rp 62.500" },
+            { qty: "600 Robux", price: "Rp 75.000" },
+            { qty: "700 Robux", price: "Rp 87.500" },
+            { qty: "800 Robux", price: "Rp 100.000" },
+            { qty: "900 Robux", price: "Rp 112.500" },
+            { qty: "1000 Robux", price: "Rp 125.000" },
+          ],
+        },
+      ],
     },
     {
-      id: 4,
-      name: "400 Robux",
-      category: "Roblox",
-      price: 75000,
-      isFavorite: true,
-      img: "/robux.jpg",
+      name: "PUBG Mobile",
+      id: "pubg",
+      img: "/pubg.jpeg",
+      desc: "Unknown Cash (UC) Global Fast Process.",
+      prices: [
+        { qty: "325 UC", price: "Rp 75.000" },
+        { qty: "660 UC", price: "Rp 150.000" },
+        { qty: "1800 UC", price: "Rp 372.500" },
+        { qty: "3850 UC", price: "Rp 755.000" },
+        { qty: "8100 UC", price: "Rp 1.510.000" },
+        { qty: "16200 UC", price: "Rp 3.017.500" },
+      ],
     },
     {
-      id: 5,
-      name: "800 Robux",
-      category: "Roblox",
-      price: 145000,
-      isFavorite: false,
-      img: "/robux.jpg",
+      name: "MCGG",
+      id: "mcgg",
+      img: "/mcggHD.JPEG",
+      desc: "Top Up Game, Voucher MCGG.",
+      prices: [
+        { qty: "Small Pack", price: "Rp 15.000" },
+        { qty: "Medium Pack", price: "Rp 45.000" },
+        { qty: "Large Pack", price: "Rp 90.000" },
+      ],
     },
     {
-      id: 6,
-      name: "2000 Robux",
-      category: "Roblox",
-      price: 350000,
-      isFavorite: false,
-      img: "/robux.jpg",
+      name: "Genshin Impact",
+      id: "genshin",
+      img: "/genshinHD.JPEG",
+      desc: "Genesis Crystals & Welkin Moon.",
+      prices: [
+        { qty: "60 Crystals", price: "Rp 16.000" },
+        { qty: "300 Crystals", price: "Rp 79.000" },
+        { qty: "Welkin Moon", price: "Rp 79.000" },
+      ],
     },
   ];
 
-  // Logika Search & Filter
-  const filteredProducts = allProducts
-    .filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()))
-    .sort((a, b) => {
-      if (filter === "lowest") return a.price - b.price;
-      if (filter === "highest") return b.price - a.price;
-      return 0;
-    });
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting)
+            entry.target.classList.add("reveal-visible");
+        });
+      },
+      { threshold: 0.1 },
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleOrder = () => {
+    const waNumber = "6285126312694";
+    const categoryText = selectedCategory ? ` [${selectedCategory}]` : "";
+    const text =
+      `*FORM PEMESANAN NAYRASTORE*\n\n` +
+      `*Game:* ${selectedGame?.name}${categoryText}\n` +
+      `*Item:* ${orderData.item}\n` +
+      `*Harga:* ${orderData.amount}\n` +
+      `*ID & Server/Nickname Game:* ${orderData.idPlayer}\n` +
+      `*No. Telp:* ${orderData.phone}\n\n` +
+      `_Mohon segera diproses ya Admin, terima kasih!_`;
+
+    window.open(
+      `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`,
+      "_blank",
+    );
+    setIsModalOpen(false);
+  };
+
+  const currentPrices = selectedGame?.hasCategories
+    ? selectedGame.categories.find((c: any) => c.name === selectedCategory)
+        ?.prices || []
+    : selectedGame?.prices || [];
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8 md:py-16 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="mb-8 md:mb-12 text-center md:text-left">
-          <h1 className="text-4xl md:text-7xl font-[1000] text-slate-900 tracking-tighter uppercase italic leading-none">
-            Daftar <span className="text-blue-600">Produk</span>
-          </h1>
-          <div className="h-1.5 md:h-2 w-20 md:w-32 bg-gradient-to-r from-blue-600 to-purple-600 mt-4 rounded-full mx-auto md:mx-0"></div>
-          <p className="text-slate-500 mt-4 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs opacity-70">
-            RIFKA PROJECT • PREMIUM GAMING STORE
+    <div className="min-h-screen bg-[#0B0E14] overflow-x-hidden relative">
+      <div className="stars-container"></div>
+
+      <div className="w-full bg-white/5 border-b border-white/5 py-3 overflow-hidden z-20 relative">
+        <div className="animate-marquee">
+          {[1, 2].map((i) => (
+            <div key={i} className="flex shrink-0">
+              <span className="text-white font-bold uppercase text-[10px] md:text-[11px] tracking-[0.3em] mx-10">
+                🔥 PILIHAN GAME TERLENGKAP HANYA DI NAYRASTORE !
+              </span>
+              <span className="text-blue-400 font-bold uppercase text-[10px] md:text-[11px] tracking-[0.3em] mx-10">
+                💎 PROSES 1-10 MENIT SAJA
+              </span>
+              <span className="text-pink-500 font-bold uppercase text-[10px] md:text-[11px] tracking-[0.3em] mx-10">
+                🚀 NAYRASTORE TERPERCAYA SE-INDONESIA
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-5xl mx-auto py-16 px-4 md:px-10 relative z-10">
+        <div className="mb-20 text-center reveal">
+          <p className="text-blue-400 text-[10px] md:text-xs font-black tracking-[0.5em] uppercase mb-4 opacity-70">
+            Official Services
           </p>
+          <h1 className="text-3xl md:text-6xl font-[1000] text-white tracking-tighter uppercase italic leading-none drop-shadow-[0_0_15px_rgba(77,124,254,0.5)]">
+            MENU{" "}
+            <span className="bg-gradient-to-r from-[#4D7CFE] via-[#8E94F2] to-[#f472b6] bg-clip-text text-transparent">
+              LAYANAN
+            </span>
+          </h1>
+          <div className="h-1.5 w-24 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-600 mt-6 mx-auto rounded-full shadow-[0_0_15px_#8E94F2]"></div>
         </div>
 
-        {/* Responsive Search & Filter Bar */}
-        <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-12 md:mb-20">
-          <div className="relative flex-grow">
-            <input
-              type="text"
-              placeholder="Cari diamond atau robux..."
-              className="w-full p-4 md:p-6 rounded-2xl md:rounded-[2.5rem] border-4 border-white shadow-xl shadow-blue-500/5 focus:ring-4 focus:ring-blue-100 outline-none transition-all font-bold text-slate-700 text-sm md:text-base pl-6 md:pl-10"
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          <select
-            className="p-4 md:p-6 px-6 md:px-10 rounded-2xl md:rounded-[2.5rem] border-4 border-white bg-white shadow-xl shadow-blue-500/5 outline-none cursor-pointer font-black text-slate-700 uppercase italic tracking-tighter text-sm md:text-base"
-            onChange={(e) => setFilter(e.target.value)}
-          >
-            <option value="default">URUTKAN: DEFAULT</option>
-            <option value="lowest">HARGA TERENDAH</option>
-            <option value="highest">HARGA TERMAHAL</option>
-          </select>
-        </div>
-
-        {/* Section: Favorit Dibeli */}
-        {searchQuery === "" && (
-          <div className="mb-16 md:mb-24">
-            <h2 className="text-2xl md:text-4xl font-[1000] text-slate-800 uppercase italic mb-8 tracking-tighter flex items-center gap-3">
-              <span className="text-blue-600">★</span> Favorit{" "}
-              <span className="text-purple-600">Dibeli</span>
-            </h2>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10">
-              {allProducts
-                .filter((p) => p.isFavorite)
-                .map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    waNumber={waNumber}
+        <div className="flex flex-col">
+          {games.map((game, idx) => (
+            <div key={game.id}>
+              <div
+                className={`reveal flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-16 py-12 md:py-16 group`}
+              >
+                <div
+                  onClick={() => {
+                    setSelectedGame(game);
+                    setSelectedCategory(
+                      game.hasCategories ? game.categories[0].name : "",
+                    );
+                    setIsModalOpen(true);
+                    setShowPaymentInfo(false);
+                  }}
+                  className="relative aspect-[105/148] w-48 md:w-56 rounded-2xl overflow-hidden border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer transform transition-all duration-700 group-hover:scale-105 group-hover:border-blue-500/40"
+                >
+                  <Image
+                    src={game.img}
+                    alt={game.name}
+                    fill
+                    className="object-cover"
                   />
-                ))}
-            </div>
-          </div>
-        )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-60"></div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/40 backdrop-blur-sm">
+                    <span className="text-white font-black uppercase tracking-widest text-[10px] border border-white px-4 py-2 rounded-sm">
+                      Beli Sekarang
+                    </span>
+                  </div>
+                </div>
 
-        {/* Section: Semua Produk */}
-        <div>
-          <h2 className="text-2xl md:text-4xl font-[1000] text-slate-800 uppercase italic mb-8 tracking-tighter">
-            Semua <span className="text-blue-600">Koleksi</span>
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                waNumber={waNumber}
-              />
-            ))}
-          </div>
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-2xl md:text-4xl font-black text-slate-300 uppercase italic">
-                Produk Kosong
-              </p>
+                <div
+                  className={`flex-1 text-center ${idx % 2 === 0 ? "md:text-left" : "md:text-right"} space-y-4`}
+                >
+                  <h2 className="text-3xl md:text-4xl font-black text-white uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">
+                    {game.name}
+                  </h2>
+                  <p className="text-gray-400 text-sm md:text-lg font-medium leading-relaxed max-w-md mx-auto md:mx-0">
+                    Sedia: <span className="text-white/90">{game.desc}</span>
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSelectedGame(game);
+                      setSelectedCategory(
+                        game.hasCategories ? game.categories[0].name : "",
+                      );
+                      setIsModalOpen(true);
+                      setShowPaymentInfo(false);
+                    }}
+                    className="mt-6 px-10 py-4 bg-white/5 border border-white/10 rounded-full text-white font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-black hover:scale-105 transition-all shadow-xl"
+                  >
+                    Lihat Harga
+                  </button>
+                </div>
+              </div>
+
+              {idx !== games.length - 1 && (
+                <div className="w-full relative py-8 opacity-80">
+                  <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[15px] bg-blue-500/20 blur-md"></div>
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_15px_#fff] opacity-50"></div>
+                </div>
+              )}
             </div>
-          )}
+          ))}
         </div>
       </div>
-    </div>
-  );
-}
 
-// Komponen Card Responsive
-function ProductCard({
-  product,
-  waNumber,
-}: {
-  product: any;
-  waNumber: string;
-}) {
-  const textMessage = `Halo Rifka Project! 🚀
-Saya ingin memesan produk berikut:
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center px-4 py-6">
+          <div
+            className="absolute inset-0 bg-black/95 backdrop-blur-md"
+            onClick={() => setIsModalOpen(false)}
+          ></div>
+          <div className="relative bg-[#0F1219] border border-white/10 p-6 md:p-10 rounded-[2.5rem] w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-[0_0_60px_rgba(0,0,0,1)] custom-scrollbar">
+            {selectedGame?.hasCategories && (
+              <div className="flex flex-wrap gap-2 mb-8 border-b border-white/10 pb-6">
+                {selectedGame.categories.map((cat: any) => (
+                  <button
+                    key={cat.name}
+                    onClick={() => setSelectedCategory(cat.name)}
+                    className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${selectedCategory === cat.name ? "bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]" : "bg-white/5 text-white/40 hover:bg-white/10"}`}
+                  >
+                    {cat.name}
+                  </button>
+                ))}
+              </div>
+            )}
 
-📌 Produk: ${product.name}
-💰 Harga: Rp ${product.price.toLocaleString("id-ID")}
+            <div className="flex flex-col lg:flex-row gap-10">
+              <div className="flex-1">
+                <h4 className="text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-6">
+                  Price List {selectedCategory || selectedGame?.name}
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {currentPrices.map((p: any, i: number) => (
+                    <div
+                      key={i}
+                      className="flex justify-between items-center bg-white/[0.03] p-4 rounded-2xl border border-white/5"
+                    >
+                      <span className="text-white/80 text-[10px] font-bold">
+                        {p.qty}
+                      </span>
+                      <span className="text-blue-400 text-[10px] font-black italic">
+                        {p.price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-Formulir Pembelian:
-Nama: 
-Metode Pembayaran: 
-No Tlp: 
+              <div className="flex-1 border-t lg:border-t-0 lg:border-l border-white/10 pt-10 lg:pt-0 lg:pl-10">
+                <h3 className="text-2xl font-black text-white mb-8 uppercase italic tracking-tight">
+                  Form Order
+                </h3>
+                <div className="space-y-5">
+                  <input
+                    type="text"
+                    placeholder="Pilih Item"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-xs text-white outline-none focus:border-blue-500"
+                    onChange={(e) =>
+                      setOrderData({ ...orderData, item: e.target.value })
+                    }
+                  />
+                  <input
+                    type="text"
+                    placeholder="Input Harga"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-xs text-white outline-none focus:border-blue-500"
+                    onChange={(e) =>
+                      setOrderData({ ...orderData, amount: e.target.value })
+                    }
+                  />
+                  <input
+                    type="text"
+                    placeholder="User ID & Server/Nickname Game"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-xs text-white outline-none focus:border-blue-500"
+                    onChange={(e) =>
+                      setOrderData({ ...orderData, idPlayer: e.target.value })
+                    }
+                  />
+                  <input
+                    type="text"
+                    placeholder="Nomor Telpon"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-xs text-white outline-none focus:border-blue-500"
+                    onChange={(e) =>
+                      setOrderData({ ...orderData, phone: e.target.value })
+                    }
+                  />
 
-Mohon segera diproses ya!`;
+                  <div className="flex flex-col gap-3">
+                    <button
+                      onClick={() => setShowPaymentInfo(!showPaymentInfo)}
+                      className="w-full bg-white text-black py-4 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:bg-gray-200 transition-all shadow-xl"
+                    >
+                      {showPaymentInfo ? "Tutup Info Bayar" : "Bayar Sekarang"}
+                    </button>
 
-  const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(textMessage)}`;
+                    {showPaymentInfo && (
+                      <div className="bg-white/5 border border-white/10 p-6 rounded-2xl text-[11px] leading-relaxed text-gray-300 font-medium">
+                        <p className="mb-2 text-center italic">
+                          .≽^•˕• ྀི≼. ִ𝗌𝗐𝖾𝖾𝗍, Pᥲᥡmᥱᥒ𝗍ᨴ
+                        </p>
+                        <p className="mb-4 text-center italic">
+                          ㅤ⠁⡟. 💌₊ 𝖺𝖽𝗈𝗋𝖻'𝗌. 𝑵𝑨𝒀𝑹𝑨𝑺𝑻𝑶𝑹𝑬💫
+                        </p>
 
-  return (
-    <div className="group flex flex-col items-center">
-      {/* Container Gambar dengan Shadow & Border Tebal */}
-      <div className="relative aspect-square w-full bg-white rounded-[2rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl shadow-slate-200 border-[6px] md:border-[10px] border-white group-hover:border-blue-600 group-hover:-translate-y-3 transition-all duration-500 ease-out">
-        <Image
-          src={product.img}
-          alt={product.name}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        {product.isFavorite && (
-          <div className="absolute top-3 md:top-6 right-3 md:right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-[8px] md:text-[10px] font-black px-3 md:px-5 py-1 md:py-2 rounded-full shadow-lg uppercase italic tracking-wider">
-            Best Seller
+                        <div className="flex flex-col items-center mb-6 bg-white p-4 rounded-xl">
+                          <div className="relative w-48 h-48 mb-2">
+                            <Image
+                              src="/qris.jpeg"
+                              alt="QRIS NayraStore"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <p className="text-black font-black text-[10px] uppercase tracking-widest">
+                            Scan QRIS All Payment
+                          </p>
+                        </div>
+
+                        <div className="space-y-3">
+                          <p className="text-white font-bold italic border-l-2 border-blue-500 pl-2">
+                            💰 ʙᴄᴀ : Rifka Shafira Meilia
+                          </p>
+                          <p className="ml-4 mb-2">⤷ ( 7350298091 )</p>
+
+                          <p className="text-white font-bold italic border-l-2 border-blue-500 pl-2">
+                            💰 ᴅᴀɴᴀ : Rifka Shafira Meilia
+                          </p>
+                          <p className="ml-4 mb-2">⤷ ( 085211625814 )</p>
+
+                          <p className="text-white font-bold italic border-l-2 border-purple-500 pl-2">
+                            💰 ɢᴏᴘᴀʏ : Moh Nur Firdaus
+                          </p>
+                          <p className="ml-4 mb-2">⤷ ( 085211625814 )</p>
+
+                          <p className="text-white font-bold italic border-l-2 border-purple-500 pl-2">
+                            💰 sʜᴏᴘᴇᴇᴘᴀʏ : Moh Nur Firdaus
+                          </p>
+                          <p className="ml-4 mb-4">⤷ ( 081313339627 )</p>
+                        </div>
+
+                        <div className="border-t border-white/10 pt-4 mt-4 text-blue-400">
+                          <p className="mb-2 font-black italic">
+                            ִ ۫ 💭 ɴᴏᴛᴇ :
+                          </p>
+                          <ul className="space-y-1 opacity-80">
+                            <li>⋆.𐙚 sᴄᴀɴ ǫʀ ᴀʟʟ ᴇᴡᴀʟʟᴇᴛ ɴᴏ ғᴇᴇ.</li>
+                            <li>⋆.𐙚 sᴄᴀɴ ǫʀ ʙᴀɴᴋ +𝟻𝟶𝟶ᴘ.</li>
+                            <li>⋆.𐙚 ᴛғ ᴇᴡᴀʟʟᴇᴛ ғᴇᴇ +𝟷𝟶𝟶ᴘ.</li>
+                            <li>⋆.𐙚 ᴛᴏᴘᴜᴘ ᴇᴡᴀʟʟᴇᴛ ғᴇᴇ +𝟷𝟶𝟶𝟶.</li>
+                            <li>⋆.𐙚 ᴛᴏᴘᴜᴘ ʙᴀɴᴋ ᴋᴇ ᴇᴡᴀʟʟᴇᴛ ғᴇᴇ +𝟷𝟶𝟶𝟶.</li>
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    <button
+                      onClick={handleOrder}
+                      className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:brightness-125 transition-all shadow-xl mt-2"
+                    >
+                      Kirim via WA
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* Deskripsi Produk */}
-      <div className="mt-4 md:mt-8 w-full text-center px-1">
-        <p className="text-[8px] md:text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-1">
-          {product.category}
-        </p>
-        <h3 className="font-black text-slate-900 text-sm md:text-xl leading-tight mb-1 md:mb-2 uppercase italic tracking-tighter truncate">
-          {product.name}
-        </h3>
-        <p className="font-[1000] text-lg md:text-3xl text-slate-900 italic tracking-tighter mb-4 md:mb-6">
-          Rp {product.price.toLocaleString("id-ID")}
-        </p>
-      </div>
-
-      {/* Button Beli */}
-      <a
-        href={waLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full bg-slate-950 text-white text-center py-3 md:py-5 rounded-2xl md:rounded-[1.5rem] font-black text-[10px] md:text-xs hover:bg-blue-600 transition-all uppercase tracking-[0.15em] shadow-xl active:scale-95"
-      >
-        Beli Sekarang
-      </a>
+      <style jsx global>{`
+        .reveal {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          display: flex;
+          width: max-content;
+          animation: marquee 25s linear infinite;
+        }
+        .stars-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image:
+            radial-gradient(1.5px 1.5px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+            radial-gradient(2px 2px at 100px 150px, #fff, rgba(0, 0, 0, 0));
+          background-size: 250px 250px;
+          opacity: 0.15;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #333;
+          border-radius: 10px;
+        }
+      `}</style>
     </div>
   );
 }
