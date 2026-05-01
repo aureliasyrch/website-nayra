@@ -19,7 +19,7 @@ export default function TestimonialPage() {
     },
     {
       id: 3,
-      user: "GenshinPlayer",
+      user: "55Player",
       rating: 5,
       text: "Awalnya ragu, tapi ternyata amanah banget. Prosesnya sat-set gak pake lama. Recomended!",
       date: "15 Feb 2026",
@@ -84,7 +84,7 @@ export default function TestimonialPage() {
       id: 12,
       user: "Xiao_Simp",
       rating: 5,
-      text: "Top up Blessing Genshin paling nyaman di sini. Gak perlu login ID, cukup UID aja aman.",
+      text: "Top up Robux paling nyaman di sini. Cepat dan ga ribet.",
       date: "18 Mar 2026",
     },
     {

@@ -33,7 +33,9 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               {/* WHATSAPP ACTION BUTTON */}
               <a
-                href="https://wa.me/6285126312694"
+                href={`https://wa.me/6285126312694?text=${encodeURIComponent(
+                  "Halo NayraStore!\n\nSaya mau tanya-tanya nih tentang produk yang tersedia. Apakah stoknya ready semua?",
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 text-white px-8 py-3 rounded-2xl font-bold text-sm shadow-[0_10px_20px_rgba(0,0,0,0.3)] hover:bg-white/10 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
@@ -70,85 +72,80 @@ export default function Footer() {
           </div>
 
           {/* 2. PAYMENT METHODS SECTION */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-8 bg-white/5 p-8 rounded-[2.5rem] border border-white/10 shadow-2xl backdrop-blur-md">
-            <div className="space-y-5">
-              <h3 className="text-white font-black text-xs uppercase tracking-widest flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_#4D7CFE]"></span>{" "}
-                Bank Transfer
-              </h3>
-              <div className="space-y-2">
-                <p className="text-[10px] font-black text-gray-500 uppercase tracking-wider">
-                  BCA - Rifka Shafira Meilia
-                </p>
-                <p className="text-sm font-bold text-white bg-white/10 py-2 px-4 rounded-xl inline-block border border-white/5">
-                  7350298091
-                </p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-[10px] font-black text-gray-500 uppercase tracking-wider">
-                  DANA - Rifka Shafira Meilia
-                </p>
-                <p className="text-sm font-bold text-blue-400 bg-blue-500/10 py-2 px-4 rounded-xl inline-block border border-blue-500/20">
-                  085211625814
-                </p>
-              </div>
-            </div>
+          <div className="lg:col-span-5 bg-white/5 p-8 rounded-[2.5rem] border border-white/10 shadow-2xl backdrop-blur-md">
+            <h3 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_#4D7CFE]"></span>
+              ALL PAYMENT NAYRASTORE💫
+            </h3>
 
-            <div className="space-y-5">
-              <h3 className="text-white font-black text-xs uppercase tracking-widest flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_8px_#8E94F2]"></span>{" "}
-                E-Wallet
-              </h3>
-              <div className="space-y-2">
-                <p className="text-[10px] font-black text-gray-500 uppercase tracking-wider">
-                  GOPAY - Moh Nur Firdaus
-                </p>
-                <p className="text-sm font-bold text-white bg-white/10 py-2 px-4 rounded-xl inline-block border border-white/5">
-                  085211625814
-                </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider italic">
+                    BCA : Rifka Shafira Meilia
+                  </p>
+                  <p className="text-sm font-bold text-white bg-white/10 py-2 px-4 rounded-xl border border-white/5 inline-block">
+                    7350298091
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider italic">
+                    DANA : Rifka Shafira Meilia
+                  </p>
+                  <p className="text-sm font-bold text-blue-400 bg-blue-500/10 py-2 px-4 rounded-xl border border-blue-500/20 inline-block">
+                    085211625814
+                  </p>
+                </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-[10px] font-black text-gray-500 uppercase tracking-wider">
-                  SHOPEEPAY - Moh Nur Firdaus
-                </p>
-                <p className="text-sm font-bold text-purple-400 bg-purple-500/10 py-2 px-4 rounded-xl inline-block border border-purple-500/20">
-                  081313339627
-                </p>
+
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider italic">
+                    GOPAY : Moh Nur Firdaus
+                  </p>
+                  <p className="text-sm font-bold text-white bg-white/10 py-2 px-4 rounded-xl border border-white/5 inline-block">
+                    085211625814
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider italic">
+                    SHOPEEPAY : Moh Nur Firdaus
+                  </p>
+                  <p className="text-sm font-bold text-purple-400 bg-purple-500/10 py-2 px-4 rounded-xl border border-purple-500/20 inline-block">
+                    081313339627
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* 3. NOTES SECTION */}
           <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-white font-black text-xs uppercase tracking-[0.3em] bg-white/5 py-2 px-4 rounded-lg inline-block border border-white/10">
-              💭 Notes Fee:
+            <h3 className="text-white font-black text-xs uppercase tracking-[0.2em] bg-white/5 py-2 px-4 rounded-lg inline-block border border-white/10">
+              💭 NOTES :
             </h3>
-            <ul className="space-y-3 text-[11px] font-bold text-gray-400 uppercase tracking-tight">
-              <li className="flex items-center gap-3 group">
-                <span className="text-pink-500 group-hover:scale-125 transition-transform">
-                  ⋆.𐙚
-                </span>
-                <span>Scan QR All E-wallet No Fee</span>
+            <ul className="space-y-3 text-[10px] font-bold text-gray-400 uppercase tracking-tight">
+              <li className="flex items-center gap-2">
+                <span className="text-blue-500">-</span>
+                <span>SCAN QR VIA E-WALLET NO FEE.</span>
               </li>
-              <li className="flex items-center gap-3 group">
-                <span className="text-blue-500 group-hover:scale-125 transition-transform">
-                  ⋆.𐙚
-                </span>
-                <span>Scan QR Bank +500p</span>
+              <li className="flex items-center gap-2">
+                <span className="text-blue-500">-</span>
+                <span>SCAN QR VIA BANK FEE +Rp.500</span>
               </li>
-              <li className="flex items-center gap-3 group">
-                <span className="text-purple-500 group-hover:scale-125 transition-transform">
-                  ⋆.𐙚
-                </span>
-                <span>TF E-wallet Fee +100p</span>
+              <li className="flex items-center gap-2">
+                <span className="text-blue-500">-</span>
+                <span>TF E-WALLET FEE +Rp.100</span>
               </li>
-              <li className="flex items-center gap-3 group">
-                <span className="text-pink-500 group-hover:scale-125 transition-transform">
-                  ⋆.𐙚
-                </span>
-                <span>Topup E-wallet Fee +1000</span>
+              <li className="flex items-center gap-2">
+                <span className="text-blue-500">-</span>
+                <span>TOP UP VIA E-WALLET/BANK FEE +Rp.1000</span>
               </li>
             </ul>
+            <p className="text-[9px] text-white/50 leading-tight italic">
+              ⁺ ۪꒰𑇖. DON'T FORGET SEND A PROOF OF TRANSACTION TO ADMIN WITHOUT
+              EDITED. THANK YOU. ദ്ദി˶˃ ᵕ ˂ )
+            </p>
           </div>
         </div>
 

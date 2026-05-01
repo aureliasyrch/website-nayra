@@ -30,9 +30,6 @@ export default function Navbar() {
                 src="/logo.png"
                 alt="Nayra Store Logo"
                 fill
-                /* TRICK ZOOM: scale-[2.5] untuk membuang space kosong di file asli
-                   object-center untuk fokus ke logo NR di tengah
-                */
                 className="object-cover scale-[1.5] object-center transition-transform duration-500 group-hover:scale-[1.8]"
                 priority
               />

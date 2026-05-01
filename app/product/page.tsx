@@ -19,11 +19,11 @@ export default function ProductPage() {
       name: "Mobile Legends",
       id: "ml",
       img: "/mlcardHD.jpeg",
-      desc: "Diamonds (ID/BR), Weekly Pass, Starlight, & Gift Skin.",
+      desc: "Diamonds, Weekly Pass, Starlight, & Gift Skin.",
       hasCategories: true,
       categories: [
         {
-          name: "Diamonds Indo 🇮🇩",
+          name: "Diamonds Indo",
           prices: [
             { qty: "5 Diamonds", price: "Rp 1.500" },
             { qty: "50+50 Diamonds", price: "Rp 15.500" },
@@ -50,50 +50,118 @@ export default function ProductPage() {
           ],
         },
         {
-          name: "Diamonds Brazil 🇧🇷",
+          name: "Diamonds Global",
           prices: [
-            { qty: "50+50 Diamonds", price: "Rp 11.500" },
-            { qty: "86 Diamonds", price: "Rp 18.700" },
-            { qty: "Weekly Pass", price: "Rp 23.509" },
-            { qty: "150+150 Diamonds", price: "Rp 32.500" },
-            { qty: "172 Diamonds", price: "Rp 36.700" },
-            { qty: "250+250 Diamonds", price: "Rp 54.500" },
-            { qty: "257 Diamonds", price: "Rp 54.600" },
-            { qty: "344 Diamonds", price: "Rp 72.800" },
-            { qty: "429 Diamonds", price: "Rp 90.800" },
-            { qty: "516 Diamonds", price: "Rp 109.200" },
-            { qty: "500+500 Diamonds", price: "Rp 118.500" },
-            { qty: "600 Diamonds", price: "Rp 127.700" },
-            { qty: "792 Diamonds", price: "Rp 163.800" },
-            { qty: "878 Diamonds", price: "Rp 181.900" },
-            { qty: "963 Diamonds", price: "Rp 200.000" },
-            { qty: "1050 Diamonds", price: "Rp 217.500" },
-            { qty: "1135 Diamonds", price: "Rp 236.800" },
-            { qty: "1220 Diamonds", price: "Rp 255.000" },
-            { qty: "1346 Diamonds", price: "Rp 272.300" },
-            { qty: "1412 Diamonds", price: "Rp 291.400" },
-            { qty: "1669 Diamonds", price: "Rp 345.500" },
-            { qty: "1825 Diamonds", price: "Rp 362.800" },
-            { qty: "1926 Diamonds", price: "Rp 399.500" },
-            { qty: "2014 Diamonds", price: "Rp 418.500" },
+            { qty: "50+50 Diamonds", price: "Rp 14.500" },
+            { qty: "86 Diamonds", price: "Rp 21.000" },
+            { qty: "150+150 Diamonds", price: "Rp 41.000" },
+            { qty: "172 Diamonds", price: "Rp 42.500" },
+            { qty: "257 Diamonds", price: "Rp 60.700" },
+            { qty: "250+250 Diamonds", price: "Rp 65.500" },
+            { qty: "344 Diamonds", price: "Rp 82.700" },
+            { qty: "429 Diamonds", price: "Rp 101.500" },
+            { qty: "500+500 Diamonds", price: "Rp 132.500" },
+            { qty: "514 Diamonds", price: "Rp 120.700" },
+            { qty: "600 Diamonds", price: "Rp 140.500" },
+            { qty: "706 Diamonds", price: "Rp 162.000" },
+            { qty: "878 Diamonds", price: "Rp 202.700" },
+            { qty: "963 Diamonds", price: "Rp 222.000" },
+            { qty: "1050 Diamonds", price: "Rp 245.000" },
+            { qty: "1412 Diamonds", price: "Rp 323.700" },
+            { qty: "2195 Diamonds", price: "Rp 485.200" },
+            { qty: "3688 Diamonds", price: "Rp 799.500" },
+            { qty: "5532 Diamonds", price: "Rp 1.181.500" },
           ],
         },
         {
-          name: "Starlight Card 💫",
+          name: "Diamonds Malaysia",
           prices: [
-            { qty: "Basic Starlight", price: "Rp 35.500" },
+            { qty: "42 Diamonds", price: "Rp 12.700" },
+            { qty: "50+50 Diamonds", price: "Rp 16.500" },
+            { qty: "70 Diamonds", price: "Rp 20.600" },
+            { qty: "112 Diamonds", price: "Rp 33.700" },
+            { qty: "140 Diamonds", price: "Rp 40.800" },
+            { qty: "150+150 Diamonds", price: "Rp 48.000" },
+            { qty: "250+250 Diamonds", price: "Rp 79.500" },
+            { qty: "284 Diamonds", price: "Rp 80.700" },
+            { qty: "355 Diamonds", price: "Rp 101.100" },
+            { qty: "429 Diamonds", price: "Rp 121.400" },
+            { qty: "500+500 Diamonds", price: "Rp 160.500" },
+            { qty: "708 Diamonds", price: "Rp 205.000" },
+            { qty: "716 Diamonds", price: "Rp 202.100" },
+            { qty: "1084 Diamonds", price: "Rp 307.200" },
+            { qty: "1446 Diamonds", price: "Rp 403.800" },
+            { qty: "2976 Diamonds", price: "Rp 805.000" },
+            { qty: "7502 Diamonds", price: "Rp 2.010.500" },
+          ],
+        },
+        {
+          name: "Diamonds Filipina",
+          prices: [
+            { qty: "11 Diamonds", price: "Rp 2.900" },
+            { qty: "22 Diamonds", price: "Rp 5.900" },
+            { qty: "50+50 Diamonds", price: "Rp 15.500" },
+            { qty: "56 Diamonds", price: "Rp 13.800" },
+            { qty: "112 Diamonds", price: "Rp 27.200" },
+            { qty: "150+150 Diamonds", price: "Rp 42.500" },
+            { qty: "250+250 Diamonds", price: "Rp 68.500" },
+            { qty: "275 Diamonds", price: "Rp 69.000" },
+            { qty: "336 Diamonds", price: "Rp 81.000" },
+            { qty: "565 Diamonds", price: "Rp 137.000" },
+            { qty: "500+500 Diamonds", price: "Rp 137.500" },
+            { qty: "1163 Diamonds", price: "Rp 267.600" },
+            { qty: "2398 Diamonds", price: "Rp 532.100" },
+            { qty: "6042 Diamonds", price: "Rp 1.330.100" },
+          ],
+        },
+        {
+          name: "Starlight Card",
+          prices: [
+            { qty: "Basic Starlight", price: "Rp 37.500" },
+            { qty: "3x Basic (Free Capcut)", price: "Rp 110.000" },
             { qty: "Premium Starlight", price: "Rp 80.000" },
           ],
         },
         {
-          name: "Giftshop Skin 🎁",
+          name: "Giftshop Skin",
           prices: [
-            { qty: "Basic (269💎)", price: "Rp 35.000" },
-            { qty: "Elite (399💎)", price: "Rp 55.000" },
-            { qty: "Elite (599💎)", price: "Rp 75.000" },
-            { qty: "Special (749💎)", price: "Rp 105.000" },
-            { qty: "Epic (899💎)", price: "Rp 115.000" },
-            { qty: "Epic (1089💎)", price: "Rp 155.000" },
+            { qty: "Basic (269 Diamonds)", price: "Rp 35.000" },
+            { qty: "Elite (399 Diamonds)", price: "Rp 55.000" },
+            { qty: "Elite (599 Diamonds)", price: "Rp 75.000" },
+            { qty: "Special (749 Diamonds)", price: "Rp 105.000" },
+            { qty: "Epic (899 Diamonds)", price: "Rp 115.000" },
+            { qty: "Epic (1089 Diamonds)", price: "Rp 155.000" },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Genshin Impact",
+      id: "genshin",
+      img: "/genshinHD.JPEG",
+      desc: "Genesis Crystals, Chronal Nexus & BWM.",
+      hasCategories: true,
+      categories: [
+        {
+          name: "Genesis Crystal",
+          prices: [
+            { qty: "60 Diamonds", price: "Rp 16.500" },
+            { qty: "300 Diamonds", price: "Rp 75.000" },
+            { qty: "600 Diamonds", price: "Rp 145.000" },
+            { qty: "980 Diamonds", price: "Rp 225.000" },
+            { qty: "1980 Diamonds", price: "Rp 425.000" },
+            { qty: "3280 Diamonds", price: "Rp 705.000" },
+          ],
+        },
+        {
+          name: "Chronal Nexus",
+          prices: [
+            { qty: "60 Crystal", price: "Rp 16.500" },
+            { qty: "300 Crystal", price: "Rp 75.500" },
+            { qty: "980 Crystal", price: "Rp 252.500" },
+            { qty: "1980 Crystal", price: "Rp 495.000" },
+            { qty: "3280 Crystal", price: "Rp 805.000" },
+            { qty: "BWM", price: "Rp 85.000" },
           ],
         },
       ],
@@ -106,7 +174,7 @@ export default function ProductPage() {
       hasCategories: true,
       categories: [
         {
-          name: "Diamonds FF 💎",
+          name: "Diamonds FF",
           prices: [
             { qty: "120 Diamonds", price: "Rp 16.500" },
             { qty: "140 Diamonds", price: "Rp 18.700" },
@@ -129,7 +197,7 @@ export default function ProductPage() {
           ],
         },
         {
-          name: "Membership FF 🎫",
+          name: "Membership FF",
           prices: [
             { qty: "BP Card", price: "Rp 40.000" },
             { qty: "Weekly (MM)", price: "Rp 28.500" },
@@ -146,7 +214,7 @@ export default function ProductPage() {
       hasCategories: true,
       categories: [
         {
-          name: "Robux via Login 🔑",
+          name: "Robux via Login",
           prices: [
             { qty: "80 Robux", price: "Rp 15.500" },
             { qty: "160 Robux", price: "Rp 31.500" },
@@ -154,15 +222,12 @@ export default function ProductPage() {
             { qty: "320 Robux", price: "Rp 62.000" },
             { qty: "500 Robux", price: "Rp 72.500" },
             { qty: "1000 Robux", price: "Rp 145.000" },
-            { qty: "1500 Robux", price: "Rp 215.000" },
             { qty: "2000 Robux", price: "Rp 285.000" },
-            { qty: "3000 Robux", price: "Rp 420.000" },
-            { qty: "4000 Robux", price: "Rp 560.000" },
             { qty: "5000 Robux", price: "Rp 695.000" },
           ],
         },
         {
-          name: "Robux via Gamepass 🎮",
+          name: "Robux via Gamepass",
           prices: [
             { qty: "100 Robux", price: "Rp 12.500" },
             { qty: "200 Robux", price: "Rp 25.000" },
@@ -196,22 +261,22 @@ export default function ProductPage() {
       name: "MCGG",
       id: "mcgg",
       img: "/mcggHD.JPEG",
-      desc: "Top Up Game, Voucher MCGG.",
+      desc: "Top Up Game, Voucher MagicChest GoGo.",
       prices: [
-        { qty: "Small Pack", price: "Rp 15.000" },
-        { qty: "Medium Pack", price: "Rp 45.000" },
-        { qty: "Large Pack", price: "Rp 90.000" },
-      ],
-    },
-    {
-      name: "Genshin Impact",
-      id: "genshin",
-      img: "/genshinHD.JPEG",
-      desc: "Genesis Crystals & Welkin Moon.",
-      prices: [
-        { qty: "60 Crystals", price: "Rp 16.000" },
-        { qty: "300 Crystals", price: "Rp 79.000" },
-        { qty: "Welkin Moon", price: "Rp 79.000" },
+        { qty: "50+50 Diamonds", price: "Rp 14.000" },
+        { qty: "59 Diamonds", price: "Rp 14.500" },
+        { qty: "85 Diamonds", price: "Rp 21.000" },
+        { qty: "Weekly Pass", price: "Rp 27.500" },
+        { qty: "150+150 Diamonds", price: "Rp 40.500" },
+        { qty: "170 Diamonds", price: "Rp 41.200" },
+        { qty: "240 Diamonds", price: "Rp 57.600" },
+        { qty: "250+250 Diamonds", price: "Rp 68.500" },
+        { qty: "296 Diamonds", price: "Rp 70.500" },
+        { qty: "408 Diamonds", price: "Rp 95.700" },
+        { qty: "500+500 Diamonds", price: "Rp 136.200" },
+        { qty: "568 Diamonds", price: "Rp 129.800" },
+        { qty: "875 Diamonds", price: "Rp 202.800" },
+        { qty: "2010 Diamonds", price: "Rp 451.500" },
       ],
     },
   ];
@@ -234,13 +299,13 @@ export default function ProductPage() {
     const waNumber = "6285126312694";
     const categoryText = selectedCategory ? ` [${selectedCategory}]` : "";
     const text =
-      `*FORM PEMESANAN NAYRASTORE*\n\n` +
-      `*Game:* ${selectedGame?.name}${categoryText}\n` +
-      `*Item:* ${orderData.item}\n` +
-      `*Harga:* ${orderData.amount}\n` +
-      `*ID & Server/Nickname Game:* ${orderData.idPlayer}\n` +
-      `*No. Telp:* ${orderData.phone}\n\n` +
-      `_Mohon segera diproses ya Admin, terima kasih!_`;
+      `FORM PEMESANAN NAYRASTORE\n\n` +
+      `Game: ${selectedGame?.name}${categoryText}\n` +
+      `Item: ${orderData.item}\n` +
+      `Harga: ${orderData.amount}\n` +
+      `ID & Server/Nickname Game: ${orderData.idPlayer}\n` +
+      `No. Telp: ${orderData.phone}\n\n` +
+      `_Mohon segera diproses ya Admin, terima kasih!_ `;
 
     window.open(
       `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`,
@@ -263,13 +328,13 @@ export default function ProductPage() {
           {[1, 2].map((i) => (
             <div key={i} className="flex shrink-0">
               <span className="text-white font-bold uppercase text-[10px] md:text-[11px] tracking-[0.3em] mx-10">
-                🔥 PILIHAN GAME TERLENGKAP HANYA DI NAYRASTORE !
+                🔥 DISCOUNT SETIAP MINGGU !
               </span>
               <span className="text-blue-400 font-bold uppercase text-[10px] md:text-[11px] tracking-[0.3em] mx-10">
-                💎 PROSES 1-10 MENIT SAJA
+                💎 GIVEAWAY SETIAP BULAN
               </span>
               <span className="text-pink-500 font-bold uppercase text-[10px] md:text-[11px] tracking-[0.3em] mx-10">
-                🚀 NAYRASTORE TERPERCAYA SE-INDONESIA
+                🚀 PROSES INSTAN MANUAL
               </span>
             </div>
           ))}
@@ -305,7 +370,7 @@ export default function ProductPage() {
                     setIsModalOpen(true);
                     setShowPaymentInfo(false);
                   }}
-                  className="relative aspect-[105/148] w-48 md:w-56 rounded-2xl overflow-hidden border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer transform transition-all duration-700 group-hover:scale-105 group-hover:border-blue-500/40"
+                  className={`relative aspect-[105/148] w-48 md:w-56 rounded-2xl overflow-hidden border border-white/5 shadow-[0_0_30px_rgba(0,0,0,0.5)] transform transition-all duration-700 cursor-pointer group-hover:scale-105 group-hover:border-blue-500/40`}
                 >
                   <Image
                     src={game.img}
@@ -324,7 +389,9 @@ export default function ProductPage() {
                 <div
                   className={`flex-1 text-center ${idx % 2 === 0 ? "md:text-left" : "md:text-right"} space-y-4`}
                 >
-                  <h2 className="text-3xl md:text-4xl font-black text-white uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">
+                  <h2
+                    className={`text-3xl md:text-4xl font-black uppercase italic tracking-tighter transition-colors text-white group-hover:text-blue-400`}
+                  >
                     {game.name}
                   </h2>
                   <p className="text-gray-400 text-sm md:text-lg font-medium leading-relaxed max-w-md mx-auto md:mx-0">
@@ -449,11 +516,8 @@ export default function ProductPage() {
 
                     {showPaymentInfo && (
                       <div className="bg-white/5 border border-white/10 p-6 rounded-2xl text-[11px] leading-relaxed text-gray-300 font-medium">
-                        <p className="mb-2 text-center italic">
-                          .≽^•˕• ྀི≼. ִ𝗌𝗐𝖾𝖾𝗍, Pᥲᥡmᥱᥒ𝗍ᨴ
-                        </p>
-                        <p className="mb-4 text-center italic">
-                          ㅤ⠁⡟. 💌₊ 𝖺𝖽𝗈𝗋𝖻'𝗌. 𝑵𝑨𝒀𝑹𝑨𝑺𝑻𝑶𝑹𝑬💫
+                        <p className="mb-2 text-center font-black">
+                          ALL PAYMENT NAYRASTORE
                         </p>
 
                         <div className="flex flex-col items-center mb-6 bg-white p-4 rounded-xl">
@@ -472,47 +536,59 @@ export default function ProductPage() {
 
                         <div className="space-y-3">
                           <p className="text-white font-bold italic border-l-2 border-blue-500 pl-2">
-                            💰 ʙᴄᴀ : Rifka Shafira Meilia
+                            BCA : Rifka Shafira Meilia
                           </p>
-                          <p className="ml-4 mb-2">⤷ ( 7350298091 )</p>
+                          <p className="ml-4 mb-2">⤷ 7350298091</p>
 
                           <p className="text-white font-bold italic border-l-2 border-blue-500 pl-2">
-                            💰 ᴅᴀɴᴀ : Rifka Shafira Meilia
+                            DANA : Rifka Shafira Meilia
                           </p>
-                          <p className="ml-4 mb-2">⤷ ( 085211625814 )</p>
+                          <p className="ml-4 mb-2">⤷ 085211625814</p>
 
                           <p className="text-white font-bold italic border-l-2 border-purple-500 pl-2">
-                            💰 ɢᴏᴘᴀʏ : Moh Nur Firdaus
+                            GOPAY : Moh Nur Firdaus
                           </p>
-                          <p className="ml-4 mb-2">⤷ ( 085211625814 )</p>
+                          <p className="ml-4 mb-2">⤷ 085211625814</p>
 
                           <p className="text-white font-bold italic border-l-2 border-purple-500 pl-2">
-                            💰 sʜᴏᴘᴇᴇᴘᴀʏ : Moh Nur Firdaus
+                            SHOPEEPAY : Moh Nur Firdaus
                           </p>
-                          <p className="ml-4 mb-4">⤷ ( 081313339627 )</p>
+                          <p className="ml-4 mb-4">⤷ 081313339627</p>
                         </div>
 
                         <div className="border-t border-white/10 pt-4 mt-4 text-blue-400">
-                          <p className="mb-2 font-black italic">
-                            ִ ۫ 💭 ɴᴏᴛᴇ :
+                          <p className="mb-2 font-black italic text-white">
+                            NOTES :
                           </p>
                           <ul className="space-y-1 opacity-80">
-                            <li>⋆.𐙚 sᴄᴀɴ ǫʀ ᴀʟʟ ᴇᴡᴀʟʟᴇᴛ ɴᴏ ғᴇᴇ.</li>
-                            <li>⋆.𐙚 sᴄᴀɴ ǫʀ ʙᴀɴᴋ +𝟻𝟶𝟶ᴘ.</li>
-                            <li>⋆.𐙚 ᴛғ ᴇᴡᴀʟʟᴇᴛ ғᴇᴇ +𝟷𝟶𝟶ᴘ.</li>
-                            <li>⋆.𐙚 ᴛᴏᴘᴜᴘ ᴇᴡᴀʟʟᴇᴛ ғᴇᴇ +𝟷𝟶𝟶𝟶.</li>
-                            <li>⋆.𐙚 ᴛᴏᴘᴜᴘ ʙᴀɴᴋ ᴋᴇ ᴇᴡᴀʟʟᴇᴛ ғᴇᴇ +𝟷𝟶𝟶𝟶.</li>
+                            <li>- SCAN QR VIA E-WALLET NO FEE.</li>
+                            <li>- SCAN QR VIA BANK FEE +Rp.500</li>
+                            <li>- TF E-WALLET FEE +Rp.100</li>
+                            <li>- TOP UP VIA E-WALLET/BANK FEE +Rp.1000</li>
                           </ul>
                         </div>
+
+                        <p className="mt-4 text-center italic text-white/60">
+                          DON'T FORGET SEND A PROOF OF TRANSACTION TO ADMIN
+                          WITHOUT EDITED. THANK YOU.
+                        </p>
                       </div>
                     )}
 
-                    <button
-                      onClick={handleOrder}
-                      className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:brightness-125 transition-all shadow-xl mt-2"
-                    >
-                      Kirim via WA
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setIsModalOpen(false)}
+                        className="flex-1 bg-white/5 border border-white/10 text-white py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white/10 transition-all"
+                      >
+                        Back
+                      </button>
+                      <button
+                        onClick={handleOrder}
+                        className="flex-[2] bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:brightness-125 transition-all shadow-xl"
+                      >
+                        Kirim via WA
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

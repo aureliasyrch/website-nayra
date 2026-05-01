@@ -121,13 +121,13 @@ export default function HomePage() {
           {[1, 2].map((i) => (
             <div key={i} className="flex shrink-0">
               <span className="text-white font-bold uppercase text-[11px] tracking-[0.3em] mx-10">
-                🔥 TOP UP MLBB DISKON 10% !
+                🔥 DISCOUNT SETIAP MINGGU !
               </span>
               <span className="text-blue-400 font-bold uppercase text-[11px] tracking-[0.3em] mx-10">
-                💎 PROSES INSTAN 1-3 MENIT
+                💎 GIVEAWAY SETIAP BULAN
               </span>
               <span className="text-pink-500 font-bold uppercase text-[11px] tracking-[0.3em] mx-10">
-                🚀 NAYRASTORE TERPERCAYA
+                🚀 PROSES INSTAN MANUAL
               </span>
             </div>
           ))}
