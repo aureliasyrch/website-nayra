@@ -125,12 +125,12 @@ export default function ProductPage() {
         {
           name: "Giftshop Skin",
           prices: [
-            { qty: "Basic (269 Diamonds)", price: "Rp 35.000" },
-            { qty: "Elite (399 Diamonds)", price: "Rp 55.000" },
-            { qty: "Elite (599 Diamonds)", price: "Rp 75.000" },
-            { qty: "Special (749 Diamonds)", price: "Rp 105.000" },
-            { qty: "Epic (899 Diamonds)", price: "Rp 115.000" },
-            { qty: "Epic (1089 Diamonds)", price: "Rp 155.000" },
+            { qty: "Basic (269💎)", price: "Rp 35.000" },
+            { qty: "Elite (399 💎)", price: "Rp 55.000" },
+            { qty: "Elite (599 💎)", price: "Rp 75.000" },
+            { qty: "Special (749 💎)", price: "Rp 105.000" },
+            { qty: "Epic (899 💎)", price: "Rp 115.000" },
+            { qty: "Epic (1089 💎)", price: "Rp 155.000" },
           ],
         },
       ],
@@ -261,7 +261,7 @@ export default function ProductPage() {
       name: "MCGG",
       id: "mcgg",
       img: "/mcggHD.JPEG",
-      desc: "Top Up Game, Voucher MagicChest GoGo.",
+      desc: "Top Up Game",
       prices: [
         { qty: "50+50 Diamonds", price: "Rp 14.000" },
         { qty: "59 Diamonds", price: "Rp 14.500" },

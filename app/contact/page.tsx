@@ -131,46 +131,83 @@ export default function ContactPage() {
           </a>
         </div>
 
-        {/* Operational Info Box */}
-        <div className="reveal mt-16 bg-[#0F1219] rounded-[3.5rem] p-10 md:p-16 border border-white/5 relative overflow-hidden group shadow-2xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-purple-600/10 transition-colors"></div>
-          <div className="relative z-10 text-center md:text-left">
-            <h2 className="text-2xl md:text-4xl font-[1000] text-white tracking-tighter uppercase italic mb-8">
+        {/* Operational Info Box - Bagian yang diperbarui */}
+        <div className="reveal bg-[#0F1219] rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 border border-white/5 relative overflow-hidden group shadow-2xl">
+          <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-blue-600/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 transition-colors"></div>
+          <div className="relative z-10">
+            <h2 className="text-2xl md:text-4xl font-[1000] text-white tracking-tighter uppercase italic mb-10 text-center md:text-left">
               Ada Masalah <span className="text-blue-400">Transaksi?</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-400 font-medium text-sm md:text-base leading-relaxed">
-              <div className="flex items-start gap-4">
-                <span className="text-2xl">📍</span>
-                <p>
-                  <span className="text-white font-black uppercase italic">
-                    NayraStore
-                  </span>{" "}
-                  berkomitmen memberikan layanan aman & legal untuk gamer.
-                </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+              {/* 1. Alamat/Komitmen */}
+              <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4 md:gap-6">
+                <div className="w-12 h-12 flex-shrink-0 bg-white/5 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+                  📍
+                </div>
+                <div className="space-y-1">
+                  <p className="text-gray-300 font-medium text-sm md:text-base leading-relaxed">
+                    <span className="text-white font-black uppercase italic tracking-tighter">
+                      NayraStore
+                    </span>{" "}
+                    berkomitmen memberikan layanan aman & legal untuk gamer.
+                  </p>
+                </div>
               </div>
-              <div className="flex items-start gap-4">
-                <span className="text-2xl">⏰</span>
-                <p>
-                  Jam Operasional Admin: <br />
-                  <span className="text-blue-400 font-black">
-                    08.00 - 22.00 WIB
-                  </span>
-                </p>
+
+              {/* 2. Jam Operasional */}
+              <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4 md:gap-6">
+                <div className="w-12 h-12 flex-shrink-0 bg-white/5 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+                  ⏰
+                </div>
+                <div className="space-y-1">
+                  <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">
+                    Waktu Operasional
+                  </p>
+                  <p className="text-gray-300 font-medium text-sm md:text-base">
+                    Jam Kerja Admin:{" "}
+                    <span className="text-blue-400 font-black">
+                      08.00 - 22.00 WIB
+                    </span>
+                  </p>
+                </div>
               </div>
-              <div className="flex items-start gap-4">
-                <span className="text-2xl">⚡</span>
-                <p>
-                  Kecepatan Proses: <br />
-                  <span className="text-purple-400 font-black italic">
-                    1-10 MENIT SAJA
-                  </span>
-                </p>
+
+              {/* 3. Kecepatan */}
+              <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4 md:gap-6">
+                <div className="w-12 h-12 flex-shrink-0 bg-white/5 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+                  ⚡
+                </div>
+                <div className="space-y-1">
+                  <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">
+                    Kecepatan
+                  </p>
+                  <p className="text-gray-300 font-medium text-sm md:text-base leading-relaxed">
+                    Proses Super Cepat:{" "}
+                    <span className="text-purple-400 font-black italic">
+                      1-10 MENIT SAJA
+                    </span>
+                  </p>
+                </div>
               </div>
-              <div className="flex items-start gap-4">
-                <span className="text-2xl">🛡️</span>
-                <p>
-                  Jaminan 100% Anti-Banned & Terpercaya di seluruh Indonesia.
-                </p>
+
+              {/* 4. Keamanan */}
+              <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4 md:gap-6">
+                <div className="w-12 h-12 flex-shrink-0 bg-white/5 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+                  🛡️
+                </div>
+                <div className="space-y-1">
+                  <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">
+                    Keamanan
+                  </p>
+                  <p className="text-gray-300 font-medium text-sm md:text-base leading-relaxed">
+                    Jaminan{" "}
+                    <span className="text-white font-bold">
+                      100% Anti-Banned
+                    </span>{" "}
+                    & Terpercaya di Indonesia.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
