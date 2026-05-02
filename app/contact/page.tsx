@@ -4,8 +4,7 @@ import Image from "next/image";
 
 export default function ContactPage() {
   const waNumber = "6285126312694"; // Update nomor WA
-  const channelLink =
-    "https://whatsapp.com/channel/0029Vb6CiYr3mFY6DGH0Tq0B/110";
+  const channelLink = "https://whatsapp.com/channel/0029VbCDR9FAO7RIbVhjA93E";
   const tiktokLink = "https://www.tiktok.com/@xrashsky14";
 
   // Template Chat Bantuan
