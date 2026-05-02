@@ -246,7 +246,7 @@ export default function ProductPage() {
     {
       name: "PUBG Mobile",
       id: "pubg",
-      img: "/pubg.jpeg",
+      img: "/pubgHD.png",
       desc: "Unknown Cash (UC) Global Fast Process.",
       prices: [
         { qty: "325 UC", price: "Rp 75.000" },

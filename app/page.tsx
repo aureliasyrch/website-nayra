@@ -18,14 +18,14 @@ export default function HomePage() {
       color: "#4D7CFE",
       img: "/RobloxcardHD.jpeg",
     },
-    { title: "MCGG", id: "mcgg", color: "#8E94F2", img: "/mcggHD.jpeg" },
+    { title: "MCGG", id: "mcgg", color: "#8E94F2", img: "/mcggHD.JPEG" },
     { title: "PUBG Mobile", id: "pubg", color: "#1E3A8A", img: "/pubgHD.png" },
-    { title: "Free Fire", id: "ff", color: "#4D7CFE", img: "/ffHD.jpeg" },
+    { title: "Free Fire", id: "ff", color: "#4D7CFE", img: "/ffHD.JPEG" },
     {
       title: "Genshin Impact",
       id: "genshin",
       color: "#8E94F2",
-      img: "/genshinHD.jpeg",
+      img: "/genshinHD.JPEG",
       position: "object-top",
     },
   ];
@@ -138,7 +138,7 @@ export default function HomePage() {
       <section className="relative px-4 pt-6 md:pt-10 reveal z-10 flex justify-center">
         <div className="relative w-full max-w-[1200px] aspect-[1200/480] rounded-none overflow-hidden border border-white/10 group shadow-2xl shadow-black">
           <Image
-            src="/HomeHD.jpeg"
+            src="/HomeHD.JPEG"
             alt="Nayra Store Background"
             fill
             className="object-cover opacity-100 group-hover:scale-[1.03] transition-transform duration-[4000ms] ease-out"
