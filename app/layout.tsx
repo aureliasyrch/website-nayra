@@ -5,9 +5,31 @@ import Footer from "./components/Footer";
 export const metadata = {
   title: "Nayra Game Store",
   description: "Top Up Game Murah & Terpercaya",
-  // Tambahkan baris verification di bawah ini
   verification: {
     google: "nph-DS9mtY5L5KS5yiBo--ZUXHlxcEzoFa3lLlf2gyo",
+  },
+  // 1. TAMBAHKAN BAGIAN INI UNTUK WHATSAPP
+  openGraph: {
+    title: "Nayra Game Store",
+    description: "Top Up Game Murah & Terpercaya",
+    url: "https://nayragamestore.vercel.app",
+    siteName: "NayraStore",
+    images: [
+      {
+        url: "/nayrastore.png", // Mengarah ke public/nayrastore.png
+        width: 1200,
+        height: 630,
+        alt: "NayraStore Logo",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  // 2. TAMBAHKAN BAGIAN INI UNTUK LOGO DI TAB BROWSER
+  icons: {
+    icon: "/nayrastore.png", // Ganti favicon vercel jadi logo kamu
+    shortcut: "/nayrastore.png",
+    apple: "/nayrastore.png",
   },
 };
 
