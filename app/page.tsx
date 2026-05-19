@@ -113,6 +113,18 @@ export default function HomePage() {
           animation: stars 150s linear infinite;
           opacity: 0.5;
         }
+        @keyframes neonGlow {
+          0%,
+          100% {
+            box-shadow: 0 0 15px rgba(77, 124, 254, 0.2);
+          }
+          50% {
+            box-shadow: 0 0 30px rgba(244, 114, 182, 0.4);
+          }
+        }
+        .promo-card-glow {
+          animation: neonGlow 6s infinite ease-in-out;
+        }
       `}</style>
 
       {/* 1. RUNNING TEXT */}
@@ -168,6 +180,76 @@ export default function HomePage() {
       {/* 3. POPULAR GAMES SECTION */}
       <section id="populer" className="py-16 md:py-24 px-4 bg-[#0B0E14] z-10">
         <div className="max-w-7xl mx-auto">
+          {/* IKLAN PROMO HARIAN SPECIAL */}
+          <div className="reveal mb-16 bg-[#0F1219] border border-white/10 rounded-[2.5rem] p-6 md:p-8 promo-card-glow relative overflow-hidden group">
+            <div className="w-full overflow-hidden bg-gradient-to-r from-blue-600/20 to-pink-600/20 py-1.5 mb-6 rounded-xl border border-white/5">
+              <div className="animate-marquee whitespace-nowrap flex text-[10px] md:text-xs font-black uppercase tracking-widest text-pink-400">
+                {[1, 2, 3].map((n) => (
+                  <span key={n} className="mx-8">
+                    ✨ PROMO HARIAN SPECIAL NAYRA STORE • HARGA BISA BERUBAH
+                    SEWAKTU-WAKTU • AMAN & LEGAL 100% ✨
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <h3 className="text-xl md:text-2xl font-[1000] tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 uppercase italic mb-8 text-center md:text-left animate-pulse">
+              🔥 PROMO HARIAN SPECIAL 🔥
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Promo 1: FF */}
+              <div className="bg-white/[0.02] backdrop-blur-md border border-white/5 p-5 rounded-2xl shadow-xl transform transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/30 hover:bg-white/[0.04]">
+                <p className="text-blue-400 text-sm font-black tracking-wide uppercase mb-1">
+                  ✅ MM FF
+                </p>
+                <p className="text-white text-xl font-black mb-3">Rp 25.000</p>
+                <div className="text-[11px] text-gray-400 space-y-1 font-bold">
+                  <p className="text-white/60">⤷ MULAI PROSES TIAP SORE.</p>
+                  <p className="text-white/60">⤷ KOID = REFF/LANJUT.</p>
+                  <p className="text-white/60">⤷ BEBAS TUMPUK.</p>
+                </div>
+              </div>
+
+              {/* Promo 2: Starlight */}
+              <div className="bg-white/[0.02] backdrop-blur-md border border-white/5 p-5 rounded-2xl shadow-xl transform transition-all duration-500 hover:-translate-y-2 hover:border-pink-500/30 hover:bg-white/[0.04]">
+                <p className="text-pink-400 text-sm font-black tracking-wide uppercase mb-1">
+                  ✅ 3 STARLIGHT (BASIC)
+                </p>
+                <p className="text-white text-xl font-black mb-3">Rp 110.000</p>
+                <div className="text-[11px] text-gray-400 font-bold mt-4">
+                  <span className="bg-pink-500/20 text-pink-300 px-2.5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-wider border border-pink-500/20">
+                    FREE CAPCUT PRO
+                  </span>
+                </div>
+              </div>
+
+              {/* Promo 3: Robux */}
+              <div className="bg-white/[0.02] backdrop-blur-md border border-white/5 p-5 rounded-2xl shadow-xl transform transition-all duration-500 hover:-translate-y-2 hover:border-purple-500/30 hover:bg-white/[0.04]">
+                <p className="text-purple-400 text-sm font-black tracking-wide uppercase mb-2">
+                  ✅ ROBUX VILOG
+                </p>
+                <div className="space-y-0.5 mb-3">
+                  <p className="text-white text-xs font-black">
+                    ⤷ 500r : <span className="text-purple-300">Rp 68.500</span>
+                  </p>
+                  <p className="text-white text-xs font-black">
+                    ⤷ 1000r :{" "}
+                    <span className="text-purple-300">Rp 135.000</span>
+                  </p>
+                </div>
+                <div className="text-[10px] text-gray-400 space-y-0.5 font-bold border-t border-white/5 pt-2">
+                  <p>• START PROSES JAM 13:00</p>
+                  <p>• MAX DROP JAM 12:30</p>
+                  <p>• PROSES 1-3 JAM SESUAI ANTRIAN.</p>
+                  <p className="text-purple-300 font-black">
+                    • READY TIAP SELASA & KAMIS.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="mb-12 text-left reveal">
             <h2 className="text-2xl md:text-5xl font-black text-white tracking-tight uppercase">
               Game Tersedia
